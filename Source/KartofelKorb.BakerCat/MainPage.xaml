@@ -1,0 +1,90 @@
+﻿<phone:PhoneApplicationPage x:Class="KartofelKorb.BakerCat.MainPage"
+                            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                            xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+                            xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+                            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                            FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                            FontSize="{StaticResource PhoneFontSizeNormal}"
+                            Foreground="{StaticResource PhoneForegroundBrush}"
+                            SupportedOrientations="Portrait"
+                            Orientation="Portrait"
+                            mc:Ignorable="d"
+                            d:DesignWidth="480"
+                            d:DesignHeight="768"
+                            shell:SystemTray.IsVisible="True"
+                            shell:SystemTray.BackgroundColor="#FEF2E6"
+                            shell:SystemTray.ForegroundColor="Black"
+                            Loaded="OnLoaded"
+                            DataContext="{Binding Main, Source={StaticResource Locator}}">
+
+    <Grid x:Name="LayoutRoot"
+          Background="#fef2e6">
+       
+        <StackPanel>
+            <TextBlock
+                Margin="10"
+                HorizontalAlignment="Center"
+                Foreground="Black"
+                FontWeight="SemiBold"
+                FontSize="{StaticResource PhoneFontSizeExtraExtraLarge}">
+                Baker Cat!
+            </TextBlock>
+            <phone:WebBrowser
+                VerticalAlignment="Top"
+                Name="webBrowser"
+                IsHitTestVisible="False"
+                Width="450"
+                Height="400">
+            </phone:WebBrowser>
+
+            <TextBlock
+                Margin="0,30,0,0"
+                HorizontalAlignment="Center"
+                Foreground="Black"
+                FontSize="{StaticResource PhoneFontSizeLarge}">
+                You've been watching for:
+            </TextBlock>
+
+            <TextBlock
+                HorizontalAlignment="Center"
+                Foreground="Black"
+                FontWeight="SemiBold"       
+                FontFamily="Courier New"
+                FontSize="{StaticResource PhoneFontSizeLarge}">
+                <Run Text="{Binding Time}" />
+                <Run Text="s"/>
+            </TextBlock>
+
+        </StackPanel>
+
+        <MediaElement 
+            x:Name="music" 
+            AutoPlay="True"
+            Volume="1"
+            Width="0" Height="0"
+            MediaEnded="OnMediaEnded"/>
+    </Grid>
+    
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar 
+            IsVisible="True" 
+            IsMenuEnabled="True" 
+            BackgroundColor="#FFE6C28C" 
+            ForegroundColor="Black"
+            Opacity="0.8"
+            Mode="Minimized">
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem 
+                    x:Name="about" 
+                    Text="about"
+                    Click="OnAboutClicked">
+                </shell:ApplicationBarMenuItem>
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+    
+
+
+</phone:PhoneApplicationPage>
